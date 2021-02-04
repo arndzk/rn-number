@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Card from '../components/Card';
 import Input from '../components/Input';
+import Number from '../components/Number';
 import Colors from '../constants/colors';
 
 const StartGameScreen = (props) => {
@@ -35,10 +36,19 @@ const StartGameScreen = (props) => {
     setConfirmed(true);
     setSelectedNumber(chosenNumber);
     setEnteredValue('');
+    Keyboard.dismiss();
   };
   let confirmedOutput;
   if (confirmed) {
-    confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>;
+    confirmedOutput = (
+      <Card style={styles.summaryContainer}>
+        <Text>You selected: </Text>
+        <Number>{selectedNumber}</Number>
+        <View style={styles.button}>
+          <Button color={Colors.primary} title="Start Game" />
+        </View>
+      </Card>
+    );
   }
 
   return (
@@ -115,6 +125,10 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '40%',
+  },
+  summaryContainer: {
+    marginTop: 20,
+    alignItems: 'center',
   },
 });
 
