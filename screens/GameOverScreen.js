@@ -3,6 +3,7 @@ import { View, StyleSheet, Button, Image, Text } from 'react-native';
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import Colors from '../constants/colors';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 const GameOverScreen = (props) => {
   return (
@@ -13,6 +14,7 @@ const GameOverScreen = (props) => {
       <Image
         style={styles.image}
         source={require('../assets/images/baseline_stars_black_48.png')}
+        color={Colors.primary}
       />
       <View>
         <BodyText style={styles.resultText}>
@@ -21,7 +23,9 @@ const GameOverScreen = (props) => {
           <Text style={styles.highlight}> {props.userNumber}</Text>!
         </BodyText>
       </View>
-      <MainButton onPress={props.onRestart}>RESTART</MainButton>
+      <MainButton onPress={props.onRestart}>
+        <MaterialCommunityIcons name="reload" size={24} />
+      </MainButton>
     </View>
   );
 };
